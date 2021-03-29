@@ -23,8 +23,11 @@ class CurriculumVitae implements Serializable {
     @OneToOne(mappedBy = "curriculumVitae")
     private JobHunter jobHunter;
 
-    @OneToMany(mappedBy="curriculumVitae")
+    @OneToMany(mappedBy = "curriculumVitae")
     private List<ProfessionalExperience> professionalExperience;
 
-//    private Education education;
+    private Education education;
+
+    @ElementCollection
+    private List<String> foreignLanguages;
 }
