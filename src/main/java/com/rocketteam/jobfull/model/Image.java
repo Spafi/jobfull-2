@@ -24,5 +24,5 @@ public @Data class Image implements Serializable {
 
     private UUID companyId;
 
-    private UUID userId;
+    private UUID jobHunterId;
 }

@@ -44,4 +44,12 @@ class JobHunter implements Serializable {
     @OneToMany
     private List<Job> applications;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "jobhunter_cv",
+            joinColumns =
+                    { @JoinColumn(name = "jobhunter_id", referencedColumnName = "id") },
+            inverseJoinColumns =
+                    { @JoinColumn(name = "cv_id", referencedColumnName = "id") })
+    private CurriculumVitae curriculumVitae;
+
 }

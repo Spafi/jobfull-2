@@ -10,5 +10,5 @@ import java.util.UUID;
 public interface ImageRepository extends JpaRepository<Image, Long> {
 
     Optional<Image> findByCompanyId(UUID companyId);
-    Optional<Image> findByUserId(UUID userId);
+    Optional<Image> findByJobHunterId(UUID userId);
 }
