@@ -51,10 +51,12 @@ public class CompanyServiceImpl implements CompanyService{
         return jobRepository.findByCompanyId(companyId);
     }
 
+
     @Override
-    public List<JobHunter> getCompanyApplicants(UUID companyId) {
-//        TODO: null check;
+    public void addJobToCompany(UUID companyId, Job job) {
+        //        TODO: null check
         Company company =  companyRepository.findById(companyId).get();
-        return company.getApplicants();
+        job.setCompany(company);
+        jobRepository.save(job);
     }
 }

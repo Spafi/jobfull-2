@@ -45,13 +45,15 @@ public class CompanyController {
         return companyService.findCompanyByName(name);
     }
 
-    @GetMapping(value = "/jobs")
-    public List<Job> getCompanyJobs(UUID companyId) {
+    @GetMapping(value = "/{companyId}/jobs")
+    public List<Job> getCompanyJobs(@PathVariable UUID companyId) {
         return companyService.getJobsForCompany(companyId);
     }
 
-    @GetMapping(value = "/applicants")
-    public List<JobHunter> getCompanyApplicants(UUID companyId) {
-        return companyService.getCompanyApplicants(companyId);
+
+    @PostMapping(path = "/{companyId}/jobs")
+    public void addJobToCompany(@PathVariable UUID companyId, @RequestBody Job job) {
+        companyService.addJobToCompany(companyId, job);
     }
+
 }

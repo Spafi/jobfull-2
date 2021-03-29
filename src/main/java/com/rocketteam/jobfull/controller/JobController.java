@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/api/v1/jobs")
@@ -29,9 +30,8 @@ public class JobController {
         return jobService.getAll();
     }
 
-    @PostMapping
-    public Job addJob(@RequestBody Job job) {
-        return jobService.save(job);
-    }
+
+//    TODO: Get applicants
+//    TODO: get by id
 
 }

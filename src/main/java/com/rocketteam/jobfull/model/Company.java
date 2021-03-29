@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "Company")
+@Entity
 @Table(name ="companies")
 public @Data
 class Company implements Serializable {
@@ -54,9 +54,10 @@ class Company implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @OneToMany
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            mappedBy = "company"
+    )
     private List<Job> jobs;
 
-    @OneToMany
-    private List<JobHunter> applicants;
 }

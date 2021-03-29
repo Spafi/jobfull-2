@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name ="job_hunter")
+@Table(name = "job_hunter")
 public @Data
 class JobHunter implements Serializable {
 
@@ -21,19 +21,19 @@ class JobHunter implements Serializable {
     private UUID id;
 
 
-    @Column(name ="first_name", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name ="last_name", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name ="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name ="email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "birth_date")
@@ -41,15 +41,17 @@ class JobHunter implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
+//TODO: add isSelected
+
     @OneToMany
     private List<Job> applications;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "jobhunter_cv",
             joinColumns =
-                    { @JoinColumn(name = "jobhunter_id", referencedColumnName = "id") },
+                    {@JoinColumn(name = "jobhunter_id", referencedColumnName = "id")},
             inverseJoinColumns =
-                    { @JoinColumn(name = "cv_id", referencedColumnName = "id") })
+                    {@JoinColumn(name = "cv_id", referencedColumnName = "id")})
     private CurriculumVitae curriculumVitae;
 
 }
