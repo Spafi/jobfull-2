@@ -35,4 +35,10 @@ public class JobServiceImpl implements JobService {
 //        TODO: null check
         return jobRepository.findById(jobId).get();
     }
+
+    @Override
+    public Job getByName(String name) {
+        return jobRepository.findByNameIgnoreCase(name);
+    }
+
 }

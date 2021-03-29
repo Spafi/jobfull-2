@@ -1,7 +1,6 @@
 package com.rocketteam.jobfull.model;
 
 
-
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
