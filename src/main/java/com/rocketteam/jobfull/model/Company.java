@@ -45,6 +45,18 @@ class Company implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "cui")
+    private String uniqueRegistrationCode;
+
+    @Column(name = "j")
+    private String tradeRegisterSerialNumber;
+
+    @Column(name = "country")
+    private String country;
+
     @OneToMany
     private List<Job> jobs;
+
+    @OneToMany
+    private List<JobHunter> applicants;
 }

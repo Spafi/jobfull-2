@@ -1,6 +1,8 @@
 package com.rocketteam.jobfull.controller;
 
 import com.rocketteam.jobfull.model.Company;
+import com.rocketteam.jobfull.model.Job;
+import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -41,5 +43,15 @@ public class CompanyController {
     @GetMapping(params = "name")
     public List<Company> findCompanyByName(@RequestParam(required = false) String name) {
         return companyService.findCompanyByName(name);
+    }
+
+    @GetMapping(value = "/jobs")
+    public List<Job> getCompanyJobs(UUID companyId) {
+        return companyService.getJobsForCompany(companyId);
+    }
+
+    @GetMapping(value = "/applicants")
+    public List<JobHunter> getCompanyApplicants(UUID companyId) {
+        return companyService.getCompanyApplicants(companyId);
     }
 }

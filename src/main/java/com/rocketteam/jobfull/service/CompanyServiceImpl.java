@@ -1,7 +1,11 @@
 package com.rocketteam.jobfull.service;
 
 import com.rocketteam.jobfull.model.Company;
+import com.rocketteam.jobfull.model.Job;
+import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.repository.CompanyRepository;
+import com.rocketteam.jobfull.repository.JobHunterRepository;
+import com.rocketteam.jobfull.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,13 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private JobRepository jobRepository;
+
+    @Autowired
+    private JobHunterRepository jobHunterRepository;
+
 
     @Override
     public List<Company> getAll() {
@@ -33,5 +44,17 @@ public class CompanyServiceImpl implements CompanyService{
     public Company getById(UUID id) {
 //        TODO: Null check
         return companyRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Job> getJobsForCompany(UUID companyId) {
+        return jobRepository.findByCompanyId(companyId);
+    }
+
+    @Override
+    public List<JobHunter> getCompanyApplicants(UUID companyId) {
+//        TODO: null check;
+        Company company =  companyRepository.findById(companyId).get();
+        return company.getApplicants();
     }
 }
