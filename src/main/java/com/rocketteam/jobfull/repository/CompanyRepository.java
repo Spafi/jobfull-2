@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, UUID> {
 
-    List<Company> findByNameIgnoreCase(String name);
+    List<Company> findByNameContainingIgnoreCase(String name);
 }

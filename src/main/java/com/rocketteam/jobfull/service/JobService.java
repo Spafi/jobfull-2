@@ -10,8 +10,7 @@ import java.util.UUID;
 @Service
 public interface JobService {
     List<Job> getAll();
-    Job save(Job job);
     List<JobHunter> getApplicants(UUID jobId);
     Job getById(UUID jobId);
-    Job getByName(String name);
+    List<Job> getByName(String name);
 }

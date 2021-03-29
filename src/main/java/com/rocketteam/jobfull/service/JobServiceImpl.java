@@ -21,11 +21,6 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job save(Job job) {
-        return jobRepository.save(job);
-    }
-
-    @Override
     public List<JobHunter> getApplicants(UUID jobId) {
         return jobRepository.getApplicantsById(jobId);
     }
@@ -37,8 +32,8 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job getByName(String name) {
-        return jobRepository.findByNameIgnoreCase(name);
+    public List<Job> getByName(String name) {
+        return jobRepository.findByNameContainingIgnoreCase(name);
     }
 
 }

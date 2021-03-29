@@ -71,7 +71,7 @@ class Job implements Serializable {
     @OneToMany
     private List<JobHunter> applicants;
 
-//    TODO: use check if job is new function
+//    TODO: use this function to ckeck if u=job is new
 //    final byte NEW_JOB_STATUS_IN_DAYS = 1;
 
 //    public boolean checkIfNew(String date) {

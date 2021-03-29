@@ -3,7 +3,6 @@ package com.rocketteam.jobfull.service;
 import com.rocketteam.jobfull.model.Company;
 import com.rocketteam.jobfull.model.Job;
 import com.rocketteam.jobfull.repository.CompanyRepository;
-import com.rocketteam.jobfull.repository.JobHunterRepository;
 import com.rocketteam.jobfull.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +19,6 @@ public class CompanyServiceImpl implements CompanyService{
     @Autowired
     private JobRepository jobRepository;
 
-    @Autowired
-    private JobHunterRepository jobHunterRepository;
-
-
     @Override
     public List<Company> getAll() {
         return companyRepository.findAll();
@@ -36,7 +31,7 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public List<Company> findCompanyByName(String name) {
-        return companyRepository.findByNameIgnoreCase(name);
+        return companyRepository.findByNameContainingIgnoreCase(name);
     }
 
     @Override

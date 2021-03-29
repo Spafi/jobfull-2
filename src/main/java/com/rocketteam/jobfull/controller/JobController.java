@@ -34,10 +34,9 @@ public class JobController {
     }
 
     @GetMapping(params = "name")
-    public Job getByName(@RequestParam(required = false) String name) {
+    public List<Job> getByName(@RequestParam(required = false) String name) {
         return jobService.getByName(name);
     }
-
 
     @GetMapping(value = "/{jobId}/applicants")
     public List<JobHunter> getApplicantsForJob(@PathVariable UUID jobId) {
