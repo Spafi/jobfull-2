@@ -30,4 +30,7 @@ class CurriculumVitae implements Serializable {
 
     @ElementCollection
     private List<String> foreignLanguages;
+
+    @ElementCollection
+    private List<String> searchCriteria;
 }
