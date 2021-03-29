@@ -41,7 +41,8 @@ class JobHunter implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
-//TODO: add isSelected
+    @Column(name = "is_selected")
+    private boolean isSelected;
 
     @OneToMany
     private List<Job> applications;

@@ -2,7 +2,6 @@ package com.rocketteam.jobfull.service;
 
 import com.rocketteam.jobfull.model.Company;
 import com.rocketteam.jobfull.model.Job;
-import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.repository.CompanyRepository;
 import com.rocketteam.jobfull.repository.JobHunterRepository;
 import com.rocketteam.jobfull.repository.JobRepository;
@@ -50,7 +49,6 @@ public class CompanyServiceImpl implements CompanyService{
     public List<Job> getJobsForCompany(UUID companyId) {
         return jobRepository.findByCompanyId(companyId);
     }
-
 
     @Override
     public void addJobToCompany(UUID companyId, Job job) {

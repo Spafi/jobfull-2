@@ -37,6 +37,11 @@ class Job implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date postedDate;
 
+    @Column(name = "expire_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
+    private Date expireDate;
+
     @Column(name = "contract")
     private String contract;
 
@@ -61,6 +66,9 @@ class Job implements Serializable {
 
     @Transient
     private boolean isFeatured;
+
+    @Column(name = "is_active")
+    private boolean isActive;
 
     @OneToMany
     private List<JobHunter> applicants;

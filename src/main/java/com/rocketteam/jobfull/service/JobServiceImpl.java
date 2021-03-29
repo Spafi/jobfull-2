@@ -1,14 +1,16 @@
 package com.rocketteam.jobfull.service;
 
 import com.rocketteam.jobfull.model.Job;
+import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
-public class JobServiceImpl implements JobService{
+public class JobServiceImpl implements JobService {
 
     @Autowired
     private JobRepository jobRepository;
@@ -21,5 +23,16 @@ public class JobServiceImpl implements JobService{
     @Override
     public Job save(Job job) {
         return jobRepository.save(job);
+    }
+
+    @Override
+    public List<JobHunter> getApplicants(UUID jobId) {
+        return jobRepository.getApplicantsById(jobId);
+    }
+
+    @Override
+    public Job getById(UUID jobId) {
+//        TODO: null check
+        return jobRepository.findById(jobId).get();
     }
 }

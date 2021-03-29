@@ -1,13 +1,11 @@
 package com.rocketteam.jobfull.controller;
 
-import com.rocketteam.jobfull.model.Company;
+
 import com.rocketteam.jobfull.model.Job;
-import com.rocketteam.jobfull.service.CompanyService;
+import com.rocketteam.jobfull.model.JobHunter;
+
 import com.rocketteam.jobfull.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +28,14 @@ public class JobController {
         return jobService.getAll();
     }
 
+    @GetMapping(value = "/{jobId}")
+    public Job getJob(@PathVariable UUID jobId) {
+        return jobService.getById(jobId);
+    }
 
-//    TODO: Get applicants
-//    TODO: get by id
+    @GetMapping(value = "/{jobId}/applicants")
+    public List<JobHunter> getApplicantsForJob(@PathVariable UUID jobId) {
+        return jobService.getApplicants(jobId);
+    }
 
 }
