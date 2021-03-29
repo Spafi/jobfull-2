@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
@@ -21,5 +22,16 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public Company save(Company company) {
         return companyRepository.save(company);
+    }
+
+    @Override
+    public List<Company> findCompanyByName(String name) {
+        return companyRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
+    public Company getById(UUID id) {
+//        TODO: Null check
+        return companyRepository.findById(id).get();
     }
 }

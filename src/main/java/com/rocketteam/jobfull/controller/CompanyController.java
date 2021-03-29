@@ -9,9 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/api/company")
+@RequestMapping(path = "/api/v1/companies")
 @CrossOrigin
 public class CompanyController {
 
@@ -30,5 +31,15 @@ public class CompanyController {
     @PostMapping
     public Company addCompany(@RequestBody Company company) {
         return companyService.save(company);
+    }
+
+    @GetMapping(value = "/{id}")
+    public Company getById(@PathVariable UUID id) {
+        return companyService.getById(id);
+    }
+
+    @GetMapping(params = "name")
+    public List<Company> findCompanyByName(@RequestParam(required = false) String name) {
+        return companyService.findCompanyByName(name);
     }
 }
