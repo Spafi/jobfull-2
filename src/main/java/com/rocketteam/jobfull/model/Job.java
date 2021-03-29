@@ -1,10 +1,13 @@
 package com.rocketteam.jobfull.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.UUID;
 @Entity
 public @Data
 class Job implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +33,8 @@ class Job implements Serializable {
     private int openPositions;
 
     @Column(name = "posted_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
     private Date postedDate;
 
     @Column(name = "contract")
@@ -54,4 +60,21 @@ class Job implements Serializable {
     @Transient
     private boolean isFeatured;
 
+
+    final byte NEW_JOB_STATUS_IN_DAYS = 1;
+
+    public boolean checkIfNew(String date) {
+        int day = Integer.parseInt(date.split("-")[0]);
+        int month = Integer.parseInt(date.split("-")[1]);
+        int year = Integer.parseInt(date.split("-")[2]);
+
+        LocalDate postedDate = LocalDate.of(year, month, day);
+        LocalDate today =LocalDate.now();
+        Period period = Period.between(postedDate, today);
+
+        if (period.getYears() == 0 && period.getMonths() == 0) {
+            return period.getDays() >= 0 && period.getDays() <= NEW_JOB_STATUS_IN_DAYS;
+        }
+        return false;
+    }
 }
