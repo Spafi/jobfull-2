@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name ="jobs")
 public @Data
 class Job implements Serializable {
 
@@ -41,8 +42,9 @@ class Job implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date expireDate;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "contract")
-    private String contract;
+    private ContractType contract;
 
     @Column(name = "location")
     private String location;
