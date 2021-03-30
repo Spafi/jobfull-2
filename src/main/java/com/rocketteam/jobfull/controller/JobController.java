@@ -43,4 +43,8 @@ public class JobController {
         return jobService.getApplicants(jobId);
     }
 
+    @PatchMapping(value = "/{jobId}/{jobHunterId}")
+    public void applyToJob(@PathVariable UUID jobId, @PathVariable UUID jobHunterId) {
+        jobService.applyToJob(jobId, jobHunterId);
+    }
 }
