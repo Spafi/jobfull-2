@@ -53,7 +53,7 @@ class Job implements Serializable {
 
     // TODO: CREATE ENTITY
     @ElementCollection
-    private List<String> rogra = new ArrayList<>();
+    private List<String> tools = new ArrayList<>();
 
     @ManyToOne
     @JsonIgnore
