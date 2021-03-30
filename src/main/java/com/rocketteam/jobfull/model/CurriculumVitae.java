@@ -1,5 +1,6 @@
 package com.rocketteam.jobfull.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
@@ -19,7 +20,7 @@ class CurriculumVitae implements Serializable {
     @Type(type = "pg-uuid")
     private UUID id;
 
-
+    @JsonIgnore
     @OneToOne(mappedBy = "curriculumVitae")
     private JobHunter jobHunter;
 
