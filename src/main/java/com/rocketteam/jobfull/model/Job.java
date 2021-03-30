@@ -72,4 +72,16 @@ class Job implements Serializable {
     @OneToMany
     private List<JobHunter> applicants;
 
+    @Transient
+    private UUID companyIdForApi;
+
+    @Transient
+    private String companyName;
+
+    @PostLoad
+    public void setFieldsForApi() {
+        companyIdForApi = company.getId();
+        companyName = company.getName();
+    }
+
 }
