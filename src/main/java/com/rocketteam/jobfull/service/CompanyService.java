@@ -25,4 +25,8 @@ public interface CompanyService {
     Company updateCompany(UUID companyId, Company company);
 
     void deleteCompany(UUID companyId);
+
+    Job updateCompanyJob(UUID companyId, UUID jobId, Job job);
+
+    void deleteJob(UUID companyId, UUID jobId);
 }

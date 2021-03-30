@@ -64,4 +64,14 @@ public class CompanyController {
         companyService.deleteCompany(companyId);
     }
 
+
+    @PatchMapping(path = "/{companyId}/jobs/{jobId}")
+    public Job updateJob(@PathVariable UUID companyId, @PathVariable UUID jobId, @RequestBody Job job) {
+        return companyService.updateCompanyJob(companyId, jobId, job);
+    }
+
+    @DeleteMapping(path = "/{companyId}/jobs/{jobId}")
+    public void deleteJob(@PathVariable UUID companyId, @PathVariable UUID jobId) {
+        companyService.deleteJob(companyId, jobId);
+    }
 }

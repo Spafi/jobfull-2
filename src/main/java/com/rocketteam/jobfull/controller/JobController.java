@@ -47,4 +47,5 @@ public class JobController {
     public void applyToJob(@PathVariable UUID jobId, @PathVariable UUID jobHunterId) {
         jobService.applyToJob(jobId, jobHunterId);
     }
+
 }

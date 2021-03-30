@@ -9,9 +9,17 @@ import java.util.UUID;
 
 @Service
 public interface JobService {
+    
     List<Job> getAll();
+    
     List<JobHunter> getApplicants(UUID jobId);
+    
     Job getById(UUID jobId);
+    
     List<Job> getByName(String name);
+    
     void applyToJob(UUID jobId, UUID jobHunterId);
+
+
+
 }
