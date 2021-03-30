@@ -11,7 +11,6 @@ import java.util.UUID;
 public interface CompanyService {
     List<Company> getAll();
     Company save(Company company);
-    List<Company> findCompanyByName(String name);
     Company getById(UUID id);
     List<Job> getJobsForCompany(UUID companyId);
     void addJobToCompany(UUID companyId, Job job);

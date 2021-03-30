@@ -30,11 +30,6 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public List<Company> findCompanyByName(String name) {
-        return companyRepository.findByNameContainingIgnoreCase(name);
-    }
-
-    @Override
     public Company getById(UUID id) {
 //        TODO: Null check
         return companyRepository.findById(id).get();
