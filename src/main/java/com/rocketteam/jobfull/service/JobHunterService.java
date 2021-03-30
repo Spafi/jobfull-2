@@ -13,4 +13,10 @@ public interface JobHunterService {
     JobHunter getById(UUID id);
 
     List<Job> getApplications(UUID id);
+
+    JobHunter save(JobHunter jobHunter);
+
+    JobHunter updateJobHunter(UUID id, JobHunter jobHunter);
+
+    void deleteJobHunter(UUID id);
 }

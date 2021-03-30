@@ -9,11 +9,17 @@ import java.util.UUID;
 
 @Service
 public interface CompanyService {
+
     List<Company> getAll();
+
     Company save(Company company);
+
     Company getById(UUID id);
+
     List<Job> getJobsForCompany(UUID companyId);
+
     void addJobToCompany(UUID companyId, Job job);
+
     List<Job> getActiveJobs(UUID companyId);
 
     Company updateCompany(UUID companyId, Company company);

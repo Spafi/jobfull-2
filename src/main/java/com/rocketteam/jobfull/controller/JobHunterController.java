@@ -31,5 +31,19 @@ public class JobHunterController {
         return jobHunterService.getApplications(id);
     }
 
+    @PostMapping
+    public JobHunter addJobHunter(@RequestBody JobHunter jobHunter) {
+        return jobHunterService.save(jobHunter);
+    }
+
+    @PatchMapping(value = "/{id}")
+    public JobHunter updateJobHunter(@PathVariable UUID id, @RequestBody JobHunter jobHunter) {
+        return jobHunterService.updateJobHunter(id, jobHunter);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteJobHunter(@PathVariable UUID id) {
+        jobHunterService.deleteJobHunter(id);
+    }
 
 }
