@@ -15,4 +15,6 @@ public interface JobRepository extends JpaRepository<Job, UUID> {
     List<JobHunter> getApplicantsById(UUID jobId);
 
     List<Job> findByNameContainingIgnoreCase(String name);
+
+    List<Job> findByCompanyIdAndIsActiveTrue(UUID companyId);
 }

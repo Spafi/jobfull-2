@@ -48,4 +48,20 @@ public class CompanyController {
     public void addJobToCompany(@PathVariable UUID companyId, @RequestBody Job job) {
         companyService.addJobToCompany(companyId, job);
     }
+
+    @GetMapping(path = "/{companyId}/jobs/active")
+    public List<Job> getActiveJobs(@PathVariable UUID companyId) {
+        return companyService.getActiveJobs(companyId);
+    }
+
+    @PatchMapping(value = "/{companyId}")
+    public Company updateCompany(@PathVariable UUID companyId, @RequestBody Company company) {
+        return companyService.updateCompany(companyId, company);
+    }
+
+    @DeleteMapping(value = "/{companyId}")
+    public void deleteCompany(@PathVariable UUID companyId) {
+        companyService.deleteCompany(companyId);
+    }
+
 }

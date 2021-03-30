@@ -15,4 +15,9 @@ public interface CompanyService {
     Company getById(UUID id);
     List<Job> getJobsForCompany(UUID companyId);
     void addJobToCompany(UUID companyId, Job job);
+    List<Job> getActiveJobs(UUID companyId);
+
+    Company updateCompany(UUID companyId, Company company);
+
+    void deleteCompany(UUID companyId);
 }
