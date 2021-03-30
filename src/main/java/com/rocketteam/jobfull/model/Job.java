@@ -35,6 +35,7 @@ class Job implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date postedDate;
 
+//    TODO: CALCULATE EXPIRY DATE
     @Column(name = "expire_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
@@ -71,21 +72,4 @@ class Job implements Serializable {
     @OneToMany
     private List<JobHunter> applicants;
 
-//    TODO: use this function to ckeck if u=job is new
-//    final byte NEW_JOB_STATUS_IN_DAYS = 1;
-
-//    public boolean checkIfNew(String date) {
-//        int day = Integer.parseInt(date.split("-")[0]);
-//        int month = Integer.parseInt(date.split("-")[1]);
-//        int year = Integer.parseInt(date.split("-")[2]);
-//
-//        LocalDate postedDate = LocalDate.of(year, month, day);
-//        LocalDate today =LocalDate.now();
-//        Period period = Period.between(postedDate, today);
-//
-//        if (period.getYears() == 0 && period.getMonths() == 0) {
-//            return period.getDays() >= 0 && period.getDays() <= NEW_JOB_STATUS_IN_DAYS;
-//        }
-//        return false;
-//    }
 }

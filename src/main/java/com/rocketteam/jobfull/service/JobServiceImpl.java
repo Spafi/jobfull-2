@@ -36,4 +36,22 @@ public class JobServiceImpl implements JobService {
         return jobRepository.findByNameContainingIgnoreCase(name);
     }
 
+
+//    TODO: use this function to ckeck if job is new
+//    final byte NEW_JOB_STATUS_IN_DAYS = 1;
+
+//    public boolean checkIfNew(String date) {
+//        int day = Integer.parseInt(date.split("-")[0]);
+//        int month = Integer.parseInt(date.split("-")[1]);
+//        int year = Integer.parseInt(date.split("-")[2]);
+//
+//        LocalDate postedDate = LocalDate.of(year, month, day);
+//        LocalDate today =LocalDate.now();
+//        Period period = Period.between(postedDate, today);
+//
+//        if (period.getYears() == 0 && period.getMonths() == 0) {
+//            return period.getDays() >= 0 && period.getDays() <= NEW_JOB_STATUS_IN_DAYS;
+//        }
+//        return false;
+//    }
 }

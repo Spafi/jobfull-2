@@ -39,11 +39,6 @@ public class CompanyController {
         return companyService.getById(id);
     }
 
-    @GetMapping(params = "name")
-    public List<Company> findCompanyByName(@RequestParam(required = false) String name) {
-        return companyService.findCompanyByName(name);
-    }
-
     @GetMapping(value = "/{companyId}/jobs")
     public List<Job> getCompanyJobs(@PathVariable UUID companyId) {
         return companyService.getJobsForCompany(companyId);
