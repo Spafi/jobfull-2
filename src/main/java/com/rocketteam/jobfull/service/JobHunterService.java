@@ -1,5 +1,6 @@
 package com.rocketteam.jobfull.service;
 
+import com.rocketteam.jobfull.model.CurriculumVitae;
 import com.rocketteam.jobfull.model.Job;
 import com.rocketteam.jobfull.model.JobHunter;
 import org.springframework.stereotype.Service;
@@ -19,4 +20,8 @@ public interface JobHunterService {
     JobHunter updateJobHunter(UUID id, JobHunter jobHunter);
 
     void deleteJobHunter(UUID id);
+
+    void addCurriculumVitae(UUID id, CurriculumVitae curriculumVitae);
+
+    CurriculumVitae getCurriculumVitae(UUID id);
 }

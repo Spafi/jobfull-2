@@ -1,8 +1,10 @@
 package com.rocketteam.jobfull.service;
 
 import com.rocketteam.jobfull.model.Company;
+import com.rocketteam.jobfull.model.CurriculumVitae;
 import com.rocketteam.jobfull.model.Job;
 import com.rocketteam.jobfull.model.JobHunter;
+import com.rocketteam.jobfull.repository.CurriculumVitaeRepository;
 import com.rocketteam.jobfull.repository.JobHunterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class JobHunterServiceImpl implements JobHunterService {
 
     @Autowired
     private JobHunterRepository jobHunterRepository;
+
+    @Autowired
+    private CurriculumVitaeRepository curriculumVitaeRepository;
 
     @Override
     public JobHunter getById(UUID id) {
@@ -49,5 +54,20 @@ public class JobHunterServiceImpl implements JobHunterService {
     @Override
     public void deleteJobHunter(UUID id) {
         jobHunterRepository.deleteById(id);
+    }
+
+    @Override
+    public void addCurriculumVitae(UUID id, CurriculumVitae curriculumVitae) {
+
+        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
+        jobHunterFromDb.setCurriculumVitae(curriculumVitae);
+
+        jobHunterRepository.save(jobHunterFromDb);
+    }
+
+    @Override
+    public CurriculumVitae getCurriculumVitae(UUID id) {
+        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
+        return jobHunterFromDb.getCurriculumVitae();
     }
 }

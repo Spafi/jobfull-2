@@ -1,5 +1,6 @@
 package com.rocketteam.jobfull.controller;
 
+import com.rocketteam.jobfull.model.CurriculumVitae;
 import com.rocketteam.jobfull.model.Job;
 import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.service.JobHunterService;
@@ -44,6 +45,16 @@ public class JobHunterController {
     @DeleteMapping(value = "/{id}")
     public void deleteJobHunter(@PathVariable UUID id) {
         jobHunterService.deleteJobHunter(id);
+    }
+
+    @GetMapping(value = "/{id}/cv")
+    public CurriculumVitae getCurriculumVitae(@PathVariable UUID id) {
+        return jobHunterService.getCurriculumVitae(id);
+    }
+
+    @PatchMapping(value = "/{id}/cv")
+    public void saveCurriculumVitae(@PathVariable UUID id, @RequestBody CurriculumVitae curriculumVitae) {
+        jobHunterService.addCurriculumVitae(id, curriculumVitae);
     }
 
 }
