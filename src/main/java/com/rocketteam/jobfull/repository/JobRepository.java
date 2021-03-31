@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface JobRepository extends JpaRepository<Job, UUID> {
     List<Job> findByCompanyId(UUID companyId);
 
-    List<JobHunter> getApplicantsByJobId(UUID jobId);
+    List<JobHunter> getApplicantsById(UUID jobId);
 
     List<Job> findByNameContainingIgnoreCase(String name);
 
