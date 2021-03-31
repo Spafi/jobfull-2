@@ -13,4 +13,6 @@ public interface JobService {
     List<JobHunter> getApplicants(UUID jobId);
     Job getById(UUID jobId);
     List<Job> getByName(String name);
+    List<Job> getAllActiveJobs();
+    Job save(Job job);
 }

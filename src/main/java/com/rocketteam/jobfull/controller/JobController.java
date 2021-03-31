@@ -43,4 +43,9 @@ public class JobController {
         return jobService.getApplicants(jobId);
     }
 
+    @GetMapping(value = "/active")
+    public List<Job> getAllAndActiveIsTrue() {
+        return jobService.getAllActiveJobs();
+    }
+
 }

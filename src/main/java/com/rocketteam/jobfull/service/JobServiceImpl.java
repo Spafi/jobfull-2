@@ -36,6 +36,16 @@ public class JobServiceImpl implements JobService {
         return jobRepository.findByNameContainingIgnoreCase(name);
     }
 
+    @Override
+    public List<Job> getAllActiveJobs() {
+        return jobRepository.findAllAndIsActiveTrue();
+    }
+
+    @Override
+    public Job save(Job job) {
+        return jobRepository.save(job);
+    }
+
 
 //    TODO: use this function to ckeck if job is new
 //    final byte NEW_JOB_STATUS_IN_DAYS = 1;
