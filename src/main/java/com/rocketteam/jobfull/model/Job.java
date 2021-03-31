@@ -49,6 +49,15 @@ class Job implements Serializable {
     @Column(name = "location")
     private String location;
 
+    @Column(name = "level")
+    private String level;
+
+    @Column(name = "education_level")
+    private String educationLevel;
+
+    @Column(name = "bio")
+    private String bio;
+
     // TODO: CREATE ENTITY
     @ElementCollection
     private List<String> languages = new ArrayList<>();
@@ -90,7 +99,8 @@ class Job implements Serializable {
         companyName = company.getName();
         applicantsIds = getApplicantsIds(applicants);
 
-        isNew = checkIfNew(postedDate.toString());
+// TODO : dynamically set if job is new
+//        isNew = checkIfNew(postedDate.toString());
 
     }
 
