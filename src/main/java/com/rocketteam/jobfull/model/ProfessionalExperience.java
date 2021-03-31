@@ -20,20 +20,20 @@ class ProfessionalExperience {
     @Column(name = "start_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private Date jobStartDate;
 
     @Column(name = "end_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private Date jobEndDate;
 
     private String jobName;
 
     private String company;
 
-    private String mainResponsibilities;
 
     @ManyToOne
     @JoinColumn(name="cv_id", nullable=false)
     private CurriculumVitae curriculumVitae;
+
 }
