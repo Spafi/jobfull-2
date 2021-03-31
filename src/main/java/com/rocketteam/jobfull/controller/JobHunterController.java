@@ -1,10 +1,14 @@
 package com.rocketteam.jobfull.controller;
 
+import com.rocketteam.jobfull.model.Company;
 import com.rocketteam.jobfull.model.CurriculumVitae;
 import com.rocketteam.jobfull.model.Job;
 import com.rocketteam.jobfull.model.JobHunter;
 import com.rocketteam.jobfull.service.JobHunterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,6 +59,11 @@ public class JobHunterController {
     @PatchMapping(value = "/{id}/cv")
     public void saveCurriculumVitae(@PathVariable UUID id, @RequestBody CurriculumVitae curriculumVitae) {
         jobHunterService.addCurriculumVitae(id, curriculumVitae);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<JobHunter>> getAllJobHunters() {
+        return new ResponseEntity<>(jobHunterService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 
 }

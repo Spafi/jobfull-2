@@ -24,4 +24,6 @@ public interface JobHunterService {
     void addCurriculumVitae(UUID id, CurriculumVitae curriculumVitae);
 
     CurriculumVitae getCurriculumVitae(UUID id);
+
+    List<JobHunter> getAll();
 }

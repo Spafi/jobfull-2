@@ -79,4 +79,9 @@ public class JobHunterServiceImpl implements JobHunterService {
         JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
         return jobHunterFromDb.getCurriculumVitae();
     }
+
+    @Override
+    public List<JobHunter> getAll() {
+        return jobHunterRepository.findAll();
+    }
 }
