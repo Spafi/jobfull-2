@@ -3,6 +3,7 @@ package com.rocketteam.jobfull.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.apache.tomcat.util.digester.ArrayStack;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -52,6 +53,9 @@ class JobHunter implements Serializable {
 
     @Transient
     private List<UUID> applicationsOfJobHunter;
+
+    @ElementCollection
+    private List<String> searchCriteria = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "jobhunter_cv",
