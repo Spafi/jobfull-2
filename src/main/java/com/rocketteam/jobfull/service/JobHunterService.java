@@ -26,4 +26,8 @@ public interface JobHunterService {
     CurriculumVitae getCurriculumVitae(UUID id);
 
     List<JobHunter> getAll();
+
+//    List<JobHunter> getByFirstOrLastName(String firstName, String lastName);
+
+    List<JobHunter> getByLastName(String lastName);
 }

@@ -84,4 +84,14 @@ public class JobHunterServiceImpl implements JobHunterService {
     public List<JobHunter> getAll() {
         return jobHunterRepository.findAll();
     }
+
+    @Override
+    public List<JobHunter> getByLastName(String lastName) {
+        return jobHunterRepository.findByLastNameContainingIgnoreCase(lastName);
+    }
+
+//    @Override
+//    public List<JobHunter> getByFirstOrLastName(String firstName, String lastName) {
+//        return jobHunterRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(firstName, lastName);
+//    }
 }

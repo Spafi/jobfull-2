@@ -66,4 +66,10 @@ public class JobHunterController {
         return new ResponseEntity<>(jobHunterService.getAll(), new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping(params = {"lastName"})
+    public List<JobHunter> getByName(@RequestParam(required = false) String lastName) {
+        return jobHunterService.getByLastName(lastName);
+    }
+
+
 }
