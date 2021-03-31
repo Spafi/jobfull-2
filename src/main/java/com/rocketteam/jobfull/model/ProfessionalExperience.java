@@ -3,11 +3,9 @@ package com.rocketteam.jobfull.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
 public @Data
@@ -33,7 +31,7 @@ class ProfessionalExperience {
 
 
     @ManyToOne
-    @JoinColumn(name="cv_id", nullable=false)
+    @JoinColumn(name="cv_id")
     private CurriculumVitae curriculumVitae;
 
 }
