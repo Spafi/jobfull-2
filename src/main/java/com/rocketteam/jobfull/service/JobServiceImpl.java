@@ -27,7 +27,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobHunter> getApplicants(UUID jobId) {
-        return jobRepository.getApplicantsById(jobId);
+        Job jobFromDb = jobRepository.findById(jobId).get();
+        return jobFromDb.getApplicants();
     }
 
     @Override

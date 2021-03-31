@@ -13,7 +13,7 @@ public interface JobHunterService {
 
     JobHunter getById(UUID id);
 
-    List<Job> getApplications(UUID id);
+    List<UUID> getApplications(UUID id);
 
     JobHunter save(JobHunter jobHunter);
 

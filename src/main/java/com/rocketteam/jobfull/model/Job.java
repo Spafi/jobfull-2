@@ -72,6 +72,7 @@ class Job implements Serializable {
     private boolean isActive;
 
     @OneToMany
+    @JsonIgnore
     private List<JobHunter> applicants;
 
     @Transient
@@ -80,13 +81,25 @@ class Job implements Serializable {
     @Transient
     private String companyName;
 
+    @Transient
+    private List<UUID> applicantsIds;
+
     @PostLoad
     public void setFieldsForApi() {
         companyIdForApi = company.getId();
         companyName = company.getName();
+        applicantsIds = getApplicantsIds(applicants);
 
         isNew = checkIfNew(postedDate.toString());
 
+    }
+
+    public List<UUID> getApplicantsIds(List<JobHunter> applicants) {
+        List<UUID> applicantsIds = new ArrayList<>();
+        for (JobHunter j : applicants) {
+            applicantsIds.add(j.getId());
+        }
+        return applicantsIds;
     }
 
     public boolean checkIfNew(String date) {

@@ -1,11 +1,13 @@
 package com.rocketteam.jobfull.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -44,8 +46,12 @@ class JobHunter implements Serializable {
     @Column(name = "is_selected")
     private boolean isSelected;
 
+    @JsonIgnore
     @OneToMany
     private List<Job> applications;
+
+    @Transient
+    private List<UUID> applicationsOfJobHunter;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "jobhunter_cv",
@@ -55,4 +61,16 @@ class JobHunter implements Serializable {
                     {@JoinColumn(name = "cv_id", referencedColumnName = "id")})
     private CurriculumVitae curriculumVitae;
 
+    @PostLoad
+    public void setFieldsForApi() {
+        applicationsOfJobHunter = setApplicationsForJobHunter(applications);
+    }
+
+    public List<UUID> setApplicationsForJobHunter(List<Job> jobs) {
+        List<UUID> applicationsIds = new ArrayList<>();
+        for (Job j: jobs) {
+            applicationsIds.add(j.getId());
+        }
+        return applicationsIds;
+    }
 }

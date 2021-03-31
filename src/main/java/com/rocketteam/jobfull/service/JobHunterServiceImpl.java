@@ -29,10 +29,10 @@ public class JobHunterServiceImpl implements JobHunterService {
     }
 
     @Override
-    public List<Job> getApplications(UUID id) {
+    public List<UUID> getApplications(UUID id) {
 //        TODO: null check
         JobHunter jobHunter = jobHunterRepository.findById(id).get();
-        return jobHunter.getApplications();
+        return jobHunter.getApplicationsOfJobHunter();
     }
 
     @Override

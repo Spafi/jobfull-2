@@ -28,7 +28,7 @@ public class JobHunterController {
     }
 
     @GetMapping(value = "/{id}/applications")
-    public List<Job> getApplications(@PathVariable UUID id) {
+    public List<UUID> getApplications(@PathVariable UUID id) {
         return jobHunterService.getApplications(id);
     }
 
