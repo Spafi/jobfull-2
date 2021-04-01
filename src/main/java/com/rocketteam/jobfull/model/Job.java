@@ -80,8 +80,13 @@ class Job implements Serializable {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @OneToMany
+    @ManyToMany
     @JsonIgnore
+    @JoinTable(
+            name = "job_applicants",
+            joinColumns = { @JoinColumn(name = "job_id") },
+            inverseJoinColumns = { @JoinColumn(name = "applicant_id") }
+            )
     private List<JobHunter> applicants;
 
     @Transient

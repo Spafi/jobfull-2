@@ -48,7 +48,7 @@ class JobHunter implements Serializable {
     private boolean isSelected;
 
     @JsonIgnore
-    @OneToMany
+    @ManyToMany(mappedBy = "applicants")
     private List<Job> applications;
 
     @Transient
