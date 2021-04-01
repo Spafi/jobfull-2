@@ -71,5 +71,4 @@ public class JobHunterController {
         return jobHunterService.getByLastName(lastName);
     }
 
-
 }
