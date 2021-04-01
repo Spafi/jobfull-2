@@ -20,6 +20,27 @@ class CurriculumVitae implements Serializable {
     @Type(type = "pg-uuid")
     private UUID id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "wanted_job_title")
+    private String wantedJobTitle;
+
+    @Column(name = "summary")
+    private String summary;
+
+    @Column(name = "skills")
+    private String skills;
+
     @JsonIgnore
     @OneToOne(mappedBy = "curriculumVitae")
     private JobHunter jobHunter;

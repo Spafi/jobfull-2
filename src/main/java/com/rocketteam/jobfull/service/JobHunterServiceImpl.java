@@ -43,7 +43,7 @@ public class JobHunterServiceImpl implements JobHunterService {
     @Override
     public JobHunter updateJobHunter(UUID id, JobHunter jobHunter) {
         //        TODO: null check
-        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
+        JobHunter jobHunterFromDb = jobHunterRepository.findById(id).get();
 
         if (jobHunter.getFirstName() != null) jobHunterFromDb.setFirstName(jobHunter.getFirstName());
         if (jobHunter.getLastName() != null) jobHunterFromDb.setLastName(jobHunter.getLastName());
@@ -63,20 +63,38 @@ public class JobHunterServiceImpl implements JobHunterService {
     public void addCurriculumVitae(UUID id, CurriculumVitae curriculumVitae) {
 //        TODO: null check
 
-        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
-        CurriculumVitae cv = curriculumVitaeRepository.findById(curriculumVitae.getId()).get();
-        for (ProfessionalExperience p : curriculumVitae.getProfessionalExperience()) {
-            professionalExperienceRepository.save(p);
+        JobHunter jobHunterFromDb = jobHunterRepository.findById(id).get();
+
+        if (curriculumVitae.getProfessionalExperience() != null) {
+            for (ProfessionalExperience p : curriculumVitae.getProfessionalExperience()) {
+                professionalExperienceRepository.save(p);
+            }
         }
         jobHunterFromDb.setCurriculumVitae(curriculumVitae);
 
         jobHunterRepository.save(jobHunterFromDb);
     }
 
+//    TODO : Write proper update method
+//    @Override
+//    public void updateCurriculumVitae(UUID id, CurriculumVitae curriculumVitae) {
+////        TODO: null check
+//
+//        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
+//        CurriculumVitae cv = curriculumVitaeRepository.findById(curriculumVitae.getId()).get();
+//        for (ProfessionalExperience p : cv.getProfessionalExperience()) {
+//            professionalExperienceRepository.save(p);
+//        }
+//
+//        jobHunterFromDb.setCurriculumVitae(curriculumVitae);
+//
+//        jobHunterRepository.save(jobHunterFromDb);
+//    }
+
     @Override
     public CurriculumVitae getCurriculumVitae(UUID id) {
         //        TODO: null check
-        JobHunter jobHunterFromDb =  jobHunterRepository.findById(id).get();
+        JobHunter jobHunterFromDb = jobHunterRepository.findById(id).get();
         return jobHunterFromDb.getCurriculumVitae();
     }
 

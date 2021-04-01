@@ -48,6 +48,7 @@ public class JobServiceImpl implements JobService {
         Job jobFromDb = jobRepository.findById(jobId).get();
         JobHunter jobHunterFromDb = jobHunterRepository.findById(jobHunterId).get();
         jobFromDb.getApplicants().add(jobHunterFromDb);
+        jobHunterFromDb.getApplications().add(jobFromDb);
         jobRepository.save(jobFromDb);
     }
 

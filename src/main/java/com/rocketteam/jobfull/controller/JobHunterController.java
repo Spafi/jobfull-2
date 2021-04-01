@@ -56,7 +56,7 @@ public class JobHunterController {
         return jobHunterService.getCurriculumVitae(id);
     }
 
-    @PatchMapping(value = "/{id}/cv")
+    @PostMapping(value = "/{id}/cv")
     public void saveCurriculumVitae(@PathVariable UUID id, @RequestBody CurriculumVitae curriculumVitae) {
         jobHunterService.addCurriculumVitae(id, curriculumVitae);
     }
