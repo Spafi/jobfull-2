@@ -116,10 +116,11 @@ public class CompanyServiceImpl implements CompanyService {
         //        TODO: null check
         Company company = companyRepository.findById(companyId).get();
 
-        company.getJobs().stream()
-                .filter(j -> j.getId().equals(jobId))
-                .findFirst().ifPresent(jobFromDb -> jobRepository.delete(jobFromDb));
-
+//        company.getJobs().stream()
+//                .filter(j -> j.getId().equals(jobId))
+//                .findFirst().ifPresent(jobFromDb -> jobRepository.delete(jobFromDb));
+        Job jobToDelete = companyRepository.getJobById(jobId).get();
+        jobRepository.delete(jobToDelete);
     }
 
 }
